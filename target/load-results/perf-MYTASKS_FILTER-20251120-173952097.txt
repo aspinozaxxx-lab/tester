@@ -1,0 +1,10 @@
+Nazvanie testa: Chast 2 - poisk po polyam vkladki "Vhodyashchie" razdela "Moi zadachi"
+Kolichestvo prohodov: 1
+Vremya nachala vypolneniya: 2025-11-20 17:39:43.122
+Vremya zaversheniya vypolneniya: 2025-11-20 17:39:52.097
+Srednee vremya vypolneniya zadachi: 8973 ms
+Vremya vypolneniya zadach (min / sredn / maks):
+    LOGIN: 1278 / 1278 / 1278 ms
+    OPEN_MY_TASKS: 412 / 412 / 412 ms
+    OPEN_INCOMING: 311 / 311 / 311 ms
+    APPLY_FILTERS: 1819 / 1819 / 1819 ms

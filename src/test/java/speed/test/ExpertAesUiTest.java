@@ -14,7 +14,12 @@ import java.util.List;
 public class ExpertAesUiTest extends BaseUiTest {
 
     private static final Duration DEFAULT_WAIT = Duration.ofSeconds(10);
+    // znachenie filtra dlya polya "Process"
+
     private static final String PROCESS_FILTER_VALUE = "Регистрация несоответствий сотрудниками АЭС";
+
+    // znachenie filtra dlya polya "Nazvanie etapa"
+
     private static final String STAGE_FILTER_VALUE = "Оформление несоответствий";
     private static final By EMPTY_STATE_LOCATOR = By.cssSelector("div.ant-empty");
     private static final By EMPTY_TEXT_LOCATOR = By.xpath("//*[contains(normalize-space(text()), 'Нет данных')]");

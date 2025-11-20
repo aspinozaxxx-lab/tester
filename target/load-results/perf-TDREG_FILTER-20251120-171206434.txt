@@ -1,0 +1,6 @@
+Vremya nachala vypolneniya: 2025-11-20 17:11:53.479
+Vremya zaversheniya vypolneniya: 2025-11-20 17:12:06.425
+Srednee vremya vypolneniya zadachi: 12939 ms
+Vremya vypolneniya zadach (min / sredn / maks):
+    LOGIN: 1305 / 1305 / 1305 ms
+    OPEN_TD_REGISTRY: 298 / 298 / 298 ms

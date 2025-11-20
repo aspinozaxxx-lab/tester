@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -21,11 +22,16 @@ public class ExpertAesLoadRunner {
     private static final String BASE_URL = BaseUiTest.BASE_URL;
     private static final Duration IMPLICIT_WAIT = Duration.ofSeconds(5);
     private static final LoadTestLogger LOGGER = new LoadTestLogger();
-    private static final String PROCESS_FILTER_VALUE = "пїЅпїЅ?пїЅпїЅ?пїЅпїЅ?пїЅпїЅ?пїЅпїЅ?пїЅпїЅ?пїЅпїЅ?пїЅпїЅ?пїЅпїЅ? пїЅпїЅ?пїЅпїЅ?пїЅRRпїЅпїЅ?пїЅпїЅ?пїЅпїЅ?пїЅпїЅпїЅпїЅ? пїЅпїЅ?пїЅпїЅ?пїЅпїЅ?пїЅпїЅ-пїЅпїЅ?пїЅпїЅ?пїЅпїЅ?пїЅпїЅ?пїЅпїЅ? пїЅпїЅ?пїЅпїЅ?пїЅпїЅ?";
-    private static final String STAGE_FILTER_VALUE = "пїЅпїЅ?пїЅпїЅ?пїЅпїЅ<пїЅпїЅ?пїЅпїЅ?пїЅпїЅ?пїЅпїЅ? пїЅпїЅ?пїЅпїЅ?пїЅRRпїЅпїЅ?пїЅпїЅ?пїЅпїЅ?пїЅпїЅпїЅпїЅ?";
+    // znachenie filtra dlya polya "Process" vo vkladke "Vhodyashchie"
+
+    // znachenie filtra dlya polya "Process" vo vkladke "Vhodyashchie"
+    private static final String PROCESS_FILTER_VALUE = "Регистрация несоответствий сотрудниками АЭС";
+    // znachenie filtra dlya polya "Nazvanie etapa" vo vkladke "Vhodyashchie"
+    private static final String STAGE_FILTER_VALUE = "Оформление несоответствий";
 
     @Test
     public void runLoadPlan() {
+        LocalDateTime startTime = LocalDateTime.now();
         String scenarioName = System.getProperty("scenario");
         if (scenarioName == null) {
             throw new RuntimeException("Ukazhite korrektnoe systemnoe svojstvo 'scenario' (EXPORT_FNPP / MYTASKS_FILTER / TDREG_FILTER)");
@@ -67,6 +73,8 @@ public class ExpertAesLoadRunner {
             totalTimeMs = Math.max(totalTimeMs, result.getTotalTimeMs());
         }
         LOGGER.logScenarioSummary(scenarioType, iterations, okCount, errorCount, totalTimeMs);
+        LocalDateTime endTime = LocalDateTime.now();
+        PerfReportWriter.writePerfReport(scenarioType, results, startTime, endTime);
     }
 
     private ScenarioRunResult runScenario(ScenarioType scenarioType, int instanceId) {
