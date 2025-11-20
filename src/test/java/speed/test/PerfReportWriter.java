@@ -63,12 +63,12 @@ public final class PerfReportWriter {
         Path reportFile = RESULTS_DIR.resolve(fileName);
 
         List<String> lines = new ArrayList<>();
-        lines.add("Nazvanie testa: " + testTitle);
-        lines.add("Kolichestvo prohodov: " + runsCount);
-        lines.add("Vremya nachala vypolneniya: " + TS_FORMATTER.format(startTime));
-        lines.add("Vremya zaversheniya vypolneniya: " + TS_FORMATTER.format(endTime));
-        lines.add(String.format("Srednee vremya vypolneniya zadachi: %.0f ms", avgScenarioTimeMs));
-        lines.add("Vremya vypolneniya zadach (min / sredn / maks):");
+        lines.add("Название теста: " + testTitle);
+        lines.add("Количество проходов: " + runsCount);
+        lines.add("Время начала выполнения: " + TS_FORMATTER.format(startTime));
+        lines.add("Время завершения выполнениня: " + TS_FORMATTER.format(endTime));
+        lines.add(String.format("Среднее время выполнения задачи: %.0f мс", avgScenarioTimeMs));
+        lines.add("Время выполнения задач (мин / среднее / макс):");
 
         for (Map.Entry<String, List<Long>> entry : checkpointValues.entrySet()) {
             List<Long> values = entry.getValue();
@@ -102,9 +102,9 @@ public final class PerfReportWriter {
     private static String resolveTitle(ScenarioType scenarioType) {
         // chelovekochitaemye nazvaniya dlya otcheta
         return switch (scenarioType) {
-            case EXPORT_FNPP -> "Chast 1 - Vygruzka otcheta \"Analiz proekta FNP\"";
-            case MYTASKS_FILTER -> "Chast 2 - poisk po polyam vkladki \"Vhodyashchie\" razdela \"Moi zadachi\"";
-            case TDREG_FILTER -> "Chast 3 - filtrasciya po polyam Reestra TD";
+            case EXPORT_FNPP -> "Выгрузка отчета";
+            case MYTASKS_FILTER -> "Мои задачи - фильтры процесс и название этапа";
+            case TDREG_FILTER -> "Реестр ТД - фильтр вид";
             default -> scenarioType.name();
         };
     }

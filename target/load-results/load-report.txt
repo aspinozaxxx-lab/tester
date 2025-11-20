@@ -1,5 +1,5 @@
 === MYTASKS_FILTER x1 ===
 
-#1 OK total=8973ms [LOGIN=1278ms, OPEN_MY_TASKS=412ms, OPEN_INCOMING=311ms, APPLY_FILTERS=1819ms]
-Itog po MYTASKS_FILTER x1: ok=1, error=0, totalTime=8973ms
+#1 OK total=9251ms [LOGIN=1342ms, OPEN_MY_TASKS=403ms, OPEN_INCOMING=311ms, APPLY_FILTERS=2003ms]
+Itog po MYTASKS_FILTER x1: ok=1, error=0, totalTime=9251ms
 ----------------------------------------

@@ -1,8 +1,0 @@
-Vremya nachala vypolneniya: 2025-11-20 17:38:19.704
-Vremya zaversheniya vypolneniya: 2025-11-20 17:38:31.192
-Srednee vremya vypolneniya zadachi: 11486 ms
-Vremya vypolneniya zadach (min / sredn / maks):
-    LOGIN: 1201 / 1201 / 1201 ms
-    OPEN_MY_TASKS: 409 / 409 / 409 ms
-    OPEN_INCOMING: 445 / 445 / 445 ms
-    APPLY_FILTERS: 2321 / 2321 / 2321 ms
