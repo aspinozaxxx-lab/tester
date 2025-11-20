@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class MyTasksPage {
 
@@ -23,7 +24,7 @@ public class MyTasksPage {
     public MyTasksPage(WebDriver driver) {
         this.driver = driver;
         this.fastWait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        this.tableWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        this.tableWait = new WebDriverWait(driver, Duration.ofSeconds(2));
     }
 
     public void openIncomingTab() {
@@ -43,12 +44,23 @@ public class MyTasksPage {
 
     public void applyFilter() {
         // pustoj rezultat tozhe schitaetsja uspehom filtra
+        
         tableWait.until(currentDriver -> {
-            boolean hasRows = !currentDriver.findElements(ROWS_LOCATOR).isEmpty();
-            boolean hasEmptyBlock = !currentDriver.findElements(EMPTY_STATE_LOCATOR).isEmpty();
-            boolean hasEmptyText = !currentDriver.findElements(EMPTY_TEXT_LOCATOR).isEmpty();
-            return hasRows || hasEmptyBlock || hasEmptyText;
-        });
+    // 1. Есть строки — выходим немедленно
+    if (!currentDriver.findElements(ROWS_LOCATOR).isEmpty()) {
+        return true;
+    }
+    // 2. Есть пустой блок — тоже сразу выходим
+    if (!currentDriver.findElements(EMPTY_STATE_LOCATOR).isEmpty()) {
+        return true;
+    }
+    // 3. Есть текст "Нет данных" — тоже выходим
+    if (!currentDriver.findElements(EMPTY_TEXT_LOCATOR).isEmpty()) {
+        return true;
+    }
+    // 5. Ничего не найдено — повторить итерацию
+    return false;
+});
     }
 
     private void openFilterPopover(FilterColumn column) {
